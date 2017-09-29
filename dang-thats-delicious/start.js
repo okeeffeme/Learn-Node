@@ -10,8 +10,8 @@ mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
 });
 
-// READY?! Let's go!
-
+// Import models
+require('./models/Statue');
 
 // Start our app!
 const app = require('./app');
