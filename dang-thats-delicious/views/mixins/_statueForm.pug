@@ -1,0 +1,7 @@
+mixin statueForm(statue = {})
+  form(action="/add" method="POST" enctype="mulipart/form-data" class="card")
+    label(for="name") Name
+    input(type="text" name="name") 
+    label(for="description") Description
+    input(type="text" name="description")
+    
