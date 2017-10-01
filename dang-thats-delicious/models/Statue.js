@@ -8,7 +8,7 @@ const statueSchema = new mongoose.Schema({
       trim: true,
       required: 'Please add a name'
   },
-  slugs: String,
+  slug: String,
   description: {
     type: String,
     trim: true
@@ -23,7 +23,7 @@ statueSchema.pre('save', function(next) {
   }
   this.slug = slug(this.name);
   next();
-  // MAKE SLUGS ARE UNIQUE 
+  // MAKE SLUGS ARE UNIQUE
 });
 
 module.exports = mongoose.model('Statue', statueSchema);
