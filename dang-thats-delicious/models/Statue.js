@@ -39,14 +39,19 @@ const statueSchema = new mongoose.Schema({
   photo: String
 });
 
-statueSchema.pre('save', function(next) {
+statueSchema.pre('save', async function(next) {
   if(!this.isModified('title')) {
     next();
     return;
   }
   this.slug = slug(this.title);
+  //find duplicates and make slugs unique
+  const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+  const statuesWithSlug = await this.constructor.find({ slug: slugRegEx });
+  if(statuesWithSlug.length) {
+    this.slug = `${this.slug}-${statuesWithSlug.length + 1}`;
+  }
   next();
-  // MAKE SLUGS UNIQUE
 });
 
 module.exports = mongoose.model('Statue', statueSchema);

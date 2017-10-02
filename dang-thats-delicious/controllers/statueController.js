@@ -74,6 +74,15 @@ exports.getStatues = async (req, res) => {
   res.render('statues', { title: 'Statues', statues });
 };
 
+exports.getStatueBySlug = async (req, res, next) => {
+  const statue = await Statue.findOne({ slug: req.params.slug });
+  if(!statue) {
+    next();
+    return;
+  }
+  res.render('statuePage', { title: `${statue.title}`, statue });
+};
+
 exports.editStatue = async (req, res) => {
   //Find store via ID
   const statue = await Statue.findOne({ _id: req.params.id });
