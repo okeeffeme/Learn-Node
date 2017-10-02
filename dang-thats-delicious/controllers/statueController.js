@@ -90,3 +90,22 @@ exports.editStatue = async (req, res) => {
   //render edit form
   res.render('editStatue', { title: `Edit ${statue.title}`, statue });
 };
+
+exports.searchStatues = async (req, res) => {
+  const statue = await Statue.find(
+  // first find statue that match
+  {
+    $text: {
+      $search: req.query.q
+    }
+  }, {
+    score: { $meta: 'textScore' }
+  })
+  // the sort them
+  .sort({
+    score: { $meta: 'textScore' }
+  })
+  // limit to only 5 results
+  .limit(5);
+  res.json(statue);
+};

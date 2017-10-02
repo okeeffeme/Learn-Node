@@ -39,6 +39,11 @@ const statueSchema = new mongoose.Schema({
   photo: String
 });
 
+statueSchema.index({
+  title: 'text',
+  artist: 'text'
+});
+
 statueSchema.pre('save', async function(next) {
   if(!this.isModified('title')) {
     next();

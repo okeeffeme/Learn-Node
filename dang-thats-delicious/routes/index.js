@@ -20,13 +20,14 @@ router.post('/add/:id',
   catchErrors(statueController.updateStatue)
 );
 
-router.get('/statues/:id/edit', catchErrors(statueController.editStatue));
+router.get('/statues/:id/edit', authController.isLoggedIn, catchErrors(statueController.editStatue));
 
 router.get('/statue/:slug', catchErrors(statueController.getStatueBySlug));
 
 
 //Users
 router.get('/login', userController.loginForm);
+router.post('/login', authController.login);
 router.get('/register', userController.registerForm);
 
 //1. Validate the registration data
@@ -41,5 +42,10 @@ router.post('/register',
   catchErrors(userController.register),
   authController.login
 );
+
+router.get('/logout', authController.logout);
+
+//APIs
+router.get('/api/search', catchErrors(statueController.searchStatues));
 
 module.exports = router;
