@@ -7,6 +7,6 @@ mixin statueCard(statue = {})
             != h.icon('pencil')
       img(src=`/uploads/${statue.photo || 'store.png'}`)
       h2.title
-        a(href=`/statue/${statue.slug}`) #{statue.name}
+        a(href=`/statue/${statue.slug}`) #{statue.title}
     .store__details
       p= statue.description.split(' ').slice(0, 25).join(' ')
