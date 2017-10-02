@@ -35,7 +35,8 @@ const statueSchema = new mongoose.Schema({
     address: {
       type: String
     }
-  }
+  },
+  photo: String
 });
 
 statueSchema.pre('save', function(next) {

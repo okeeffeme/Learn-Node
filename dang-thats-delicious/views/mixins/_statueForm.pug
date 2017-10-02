@@ -11,7 +11,9 @@ mixin statueForm(statue = {})
     textarea(name="description")= statue.description
     //- Photo
     label(for="photo") Photo
-    input(type="file" name="photo" id="photo" accept="image" value=statue.image) 
+      input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+      if statue.photo
+        img(src=`/uploads/${statue.photo}`, alt=statue.name width=200)
     //- Street Address
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(statue.location && statue.location.address))
