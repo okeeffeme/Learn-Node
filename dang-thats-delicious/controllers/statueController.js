@@ -119,13 +119,13 @@ exports.mapStatues = async (req, res) => {
         $geometry: {
           type: 'Point',
           coordinates
-        }
-        //$maxDistance: 10000 //10km
+        },
+        $maxDistance: 10000 //10km
       }
     }
   };
-
-  const statues = await Statue.find(q).select('photo title artist slug');
+  const statues = await Statue.find(q).select('photo title artist slug location');
+  res.json(statues);
 };
 
 exports.mapPage = (req, res) => {
