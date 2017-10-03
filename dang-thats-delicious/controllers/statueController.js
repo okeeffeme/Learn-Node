@@ -47,6 +47,7 @@ exports.createStatue = async (req, res) => {
   //if ever allowing auto creation
   //const statue = await (new Statue(req.body)).save();
   await statue.save();
+  console.log('testing before upload');
   req.flash('success', `Successfully created <strong>${statue.title}</strong>.`);
   res.redirect('/');
   //if allow auto creation

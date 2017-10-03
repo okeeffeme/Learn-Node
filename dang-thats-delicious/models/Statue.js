@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
+const striptags = require('striptags');
 
 const statueSchema = new mongoose.Schema({
   title: {
@@ -45,16 +46,20 @@ statueSchema.index({
 });
 
 statueSchema.pre('save', async function(next) {
+  this.title = striptags(this.title);
+  this.artist = striptags(this.artist);
+  this.description = striptags(this.description, ['a']);
   if(!this.isModified('title')) {
     next();
     return;
-  }
-  this.slug = slug(this.title);
-  //find duplicates and make slugs unique
-  const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
-  const statuesWithSlug = await this.constructor.find({ slug: slugRegEx });
-  if(statuesWithSlug.length) {
-    this.slug = `${this.slug}-${statuesWithSlug.length + 1}`;
+  } else {
+    this.slug = slug(this.title);
+    //find duplicates and make slugs unique
+    const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+    const statuesWithSlug = await this.constructor.find({ slug: slugRegEx });
+    if(statuesWithSlug.length) {
+      this.slug = `${this.slug}-${statuesWithSlug.length + 1}`;
+    }
   }
   next();
 });
