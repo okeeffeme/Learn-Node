@@ -989,6 +989,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _axios = __webpack_require__(3);
 
 var _axios2 = _interopRequireDefault(_axios);
@@ -999,7 +1001,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapOptions = {
   center: { lat: 59.91, lng: 10.73 },
-  zoom: 15
+  zoom: 13
 };
 
 function loadPlaces(map) {
@@ -1007,8 +1009,33 @@ function loadPlaces(map) {
   var lng = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10.73;
 
   _axios2.default.get('/api/statues/near?lat=' + lat + '&lng=' + lng).then(function (res) {
-    var statues = res.data;
-    console.log(statues);
+    var places = res.data;
+    if (!places.length) {
+      alert('No statues found.');
+      return;
+    }
+
+    var infoWindow = new google.maps.InfoWindow();
+
+    var markers = places.map(function (place) {
+      var _place$location$coord = _slicedToArray(place.location.coordinates, 2),
+          placeLng = _place$location$coord[0],
+          placeLat = _place$location$coord[1];
+
+      var position = { lat: placeLat, lng: placeLng };
+      var marker = new google.maps.Marker({ map: map, position: position });
+      marker.place = place;
+      return marker;
+    });
+
+    //handle infoWindow
+    markers.forEach(function (marker) {
+      return marker.addListener('click', function () {
+        var html = '\n        <div class="popup">\n          <a href="/statue/' + this.place.slug + '">\n            <img src="/uploads/' + (this.place.photo || 'store.png') + '" alt="' + this.place.title + '" />\n            <p><strong>' + this.place.title + '</strong></p>\n            <p>' + this.place.artist + '</p>\n          </a>\n        </div>\n      ';
+        infoWindow.setContent(html);
+        infoWindow.open(map, this);
+      });
+    });
   });
 };
 
@@ -1017,9 +1044,9 @@ function makeMap(mapDiv) {
   //make map
   var map = new google.maps.Map(mapDiv, mapOptions);
   loadPlaces(map);
-
-  var input = (0, _bling.$)('[name="geolocate"]');
-  var autocomplete = new google.maps.places.Autocomplete(input);
+  //Autocomplete for search input
+  //const input = $('[name="geolocate"]');
+  //const autocomplete = new google.maps.places.Autocomplete(input);
 };
 
 exports.default = makeMap;
