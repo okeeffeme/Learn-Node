@@ -45,7 +45,10 @@ router.post('/register',
 
 router.get('/logout', authController.logout);
 
+router.get('/map', statueController.mapPage);
+
 //APIs
 router.get('/api/search', catchErrors(statueController.searchStatues));
+router.get('/api/statues/near', catchErrors(statueController.mapStatues));
 
 module.exports = router;

@@ -64,7 +64,7 @@ exports.updateStatue = async (req, res) => {
   }).exec(); //exec force run query
   await statue.save();
   //redirect to statue page and notify change
-  req.flash('success', `Successfully updated <strong>${statue.title}</strong>. <a href="/statues/${statue._id}">View Statue →</a>`);
+  req.flash('success', `Successfully updated <strong>${statue.title}</strong>. <a href="/statue/${statue.slug}">View Statue →</a>`);
   res.redirect(`/statues/${statue._id}/edit`);
 };
 
@@ -109,4 +109,25 @@ exports.searchStatues = async (req, res) => {
   // limit to only 5 results
   .limit(5);
   res.json(statue);
+};
+
+exports.mapStatues = async (req, res) => {
+  const coordinates = [req.query.lng, req.query.lat].map(parseFloat);
+  const q = {
+    location: {
+      $near: {
+        $geometry: {
+          type: 'Point',
+          coordinates
+        }
+        //$maxDistance: 10000 //10km
+      }
+    }
+  };
+
+  const statues = await Statue.find(q).select('photo title artist slug');
+};
+
+exports.mapPage = (req, res) => {
+  res.render('map', { title: 'Map' });
 };

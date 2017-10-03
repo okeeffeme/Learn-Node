@@ -45,6 +45,11 @@ statueSchema.index({
   artist: 'text'
 });
 
+
+statueSchema.index({
+  location: '2dsphere'
+});
+
 statueSchema.pre('save', async function(next) {
   this.title = striptags(this.title);
   this.artist = striptags(this.artist);
