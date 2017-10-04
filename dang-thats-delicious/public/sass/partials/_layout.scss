@@ -5,19 +5,24 @@ html {
 body {
   background: $purple;
   background:#efefef;
-  &:before {
-    content: '';
-    display: block;
-    background: $grad;
-    height: 10px;
-    width: 100%;
-  }
+  // &:before {
+  //   content: '';
+  //   display: block;
+  //   background: $grad;
+  //   height: 10px;
+  //   width: 100%;
+  // }
 }
 
 .inner {
-  max-width:900px;
+  position: absolute;
+  z-index: 99;
+  width:900px;
+  left: 0;
+  right: 0;
   margin: 0 auto;
   @media all and (max-width: 900px) {
+    width: 100%;
     padding: 2rem;
   }
 }

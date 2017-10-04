@@ -5,18 +5,17 @@ html {
 body {
   background: #262161;
   background: #efefef; }
-  body:before {
-    content: '';
-    display: block;
-    background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%);
-    height: 10px;
-    width: 100%; }
 
 .inner {
-  max-width: 900px;
+  position: absolute;
+  z-index: 99;
+  width: 900px;
+  left: 0;
+  right: 0;
   margin: 0 auto; }
   @media all and (max-width: 900px) {
     .inner {
+      width: 100%;
       padding: 2rem; } }
 
 html {
@@ -620,7 +619,6 @@ label {
   .nav__link {
     background: #303030;
     color: white;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
     text-transform: uppercase;
     padding: 1.2rem 2rem 1rem 2rem;
     display: block;
@@ -641,8 +639,7 @@ label {
       margin-bottom: 1rem; }
     .nav__link:hover, .nav__link--active {
       border-bottom-color: rgba(0, 0, 0, 0.2);
-      border-right-color: rgba(0, 0, 0, 0.05);
-      background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%) fixed; }
+      background: grey; }
       .nav__link:hover svg, .nav__link--active svg {
         -ms-transform: scale(1.2);
             transform: scale(1.2); }
@@ -1087,9 +1084,6 @@ label {
 .map {
   background: black;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-
-#map {
-  height: 840px; }
 
 .gm-style-iw {
   display: -ms-flexbox;

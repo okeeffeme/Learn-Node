@@ -1093,6 +1093,11 @@ function loadPlaces(map) {
 
 function makeMap(mapDiv) {
   if (!mapDiv) return;
+  //set map div height
+  var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  var navHeight = (0, _bling.$)('.nav').offsetHeight;
+  var mapHeight = windowHeight - navHeight;
+  (0, _bling.$)('#map').style.height = mapHeight + 'px';
   //make map
   var map = new google.maps.Map(mapDiv, mapOptions);
   loadPlaces(map);

@@ -78,7 +78,7 @@ exports.getStatues = async (req, res) => {
 };
 
 exports.getStatueBySlug = async (req, res, next) => {
-  const statue = await Statue.findOne({ slug: req.params.slug });
+  const statue = await Statue.findOne({ slug: req.params.slug, public: true });
   if(!statue) {
     next();
     return;
@@ -98,6 +98,7 @@ exports.searchStatues = async (req, res) => {
   const statue = await Statue.find(
   // first find statue that match
   {
+    public: true,
     $text: {
       $search: req.query.q
     }

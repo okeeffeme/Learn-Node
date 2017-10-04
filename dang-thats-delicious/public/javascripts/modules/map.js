@@ -99,6 +99,11 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
 
 function makeMap(mapDiv) {
   if(!mapDiv) return;
+  //set map div height
+  let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  let navHeight = $('.nav').offsetHeight;
+  let mapHeight = windowHeight-navHeight;
+  $('#map').style.height = `${mapHeight}px`;
   //make map
   const map = new google.maps.Map(mapDiv, mapOptions);
   loadPlaces(map);
