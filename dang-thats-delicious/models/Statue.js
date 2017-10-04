@@ -4,6 +4,11 @@ const slug = require('slugs');
 const striptags = require('striptags');
 
 const statueSchema = new mongoose.Schema({
+  public: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   title: {
       type: String,
       trim: true,
@@ -45,6 +50,9 @@ statueSchema.index({
   artist: 'text'
 });
 
+statueSchema.index({
+  public: 'Boolean'
+});
 
 statueSchema.index({
   location: '2dsphere'

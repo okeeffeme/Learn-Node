@@ -1085,17 +1085,33 @@ label {
     text-align: center; }
 
 .map {
-  padding: 20px;
-  background: white;
+  background: black;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
 
 #map {
-  height: 500px; }
+  height: 840px; }
 
-.popup {
-  width: 300px; }
-  .popup img {
-    width: 100%; }
+.gm-style-iw {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center; }
+
+#iw-container .iw-content {
+  min-width: 200px;
+  min-height: 200px;
+  margin: 20px 0px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center; }
+  #iw-container .iw-content p {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0px 10px; }
 
 .hide {
   text-indent: -999999px;

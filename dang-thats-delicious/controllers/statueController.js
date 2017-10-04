@@ -70,7 +70,9 @@ exports.updateStatue = async (req, res) => {
 
 exports.getStatues = async (req, res) => {
   //Query DB for list of all statues
-  const statues = await Statue.find();
+  const statues = await Statue.find({
+    public: true
+  });
   console.log(statues);
   res.render('statues', { title: 'Statues', statues });
 };

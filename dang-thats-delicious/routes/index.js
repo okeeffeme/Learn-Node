@@ -5,7 +5,7 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get('/', catchErrors(statueController.getStatues));
+router.get('/', statueController.mapPage);
 router.get('/statues', statueController.getStatues);
 router.get('/add', statueController.addStatue);
 

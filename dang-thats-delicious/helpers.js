@@ -22,8 +22,6 @@ exports.siteName = `Now That's Delicious!`;
 
 exports.menu = [
   { slug: '/statues', title: 'Statues', icon: 'store', },
-  { slug: '/tags', title: 'Tags', icon: 'tag', },
-  { slug: '/top', title: 'Top', icon: 'top', },
   { slug: '/add', title: 'Add', icon: 'add', },
-  { slug: '/map', title: 'Map', icon: 'map', },
+  { slug: '/about', title: 'About', icon: 'tag', },
 ];

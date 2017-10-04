@@ -1,15 +1,30 @@
 .map {
-  padding: 20px;
-  background: white;
+  background: black;
   box-shadow: $shad;
 }
 #map {
-  height: 500px;
+  height: 840px;
 }
 
-.popup {
-  width: 300px;
-  img {
-    width: 100%;
+//modified
+
+.gm-style-iw {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#iw-container {
+  .iw-content {
+    min-width: 200px;
+  	min-height: 200px;
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 0px 10px;
+    }
   }
 }
