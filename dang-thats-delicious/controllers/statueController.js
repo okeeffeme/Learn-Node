@@ -116,6 +116,7 @@ exports.searchStatues = async (req, res) => {
 exports.mapStatues = async (req, res) => {
   const coordinates = [req.query.lng, req.query.lat].map(parseFloat);
   const q = {
+    public: true,
     location: {
       $near: {
         $geometry: {
