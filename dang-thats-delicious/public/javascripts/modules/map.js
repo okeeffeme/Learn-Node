@@ -1,6 +1,19 @@
 import axios from 'axios';
 import { $ } from './bling';
 
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 1);
+}
+
+
 const mapOptions = {
   center: { lat: 59.91, lng: 10.73},
   zoom: 13,
@@ -47,6 +60,12 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
       `;
       infoWindow.setContent(html);
       infoWindow.open(map, this);
+      //fadein iw
+      var test = $(".gm-style-iw");
+      var iw_container = $(".gm-style-iw").parentElement;
+      test.style.opacity = "0";
+        unfade(test);
+    //  unfade(iw_container);
 
       // *
         // START INFOWINDOW CUSTOMIZE.
@@ -57,13 +76,20 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
 
           // Reference to the DIV that wraps the bottom of infoWindow
           var iwOuter = $('.gm-style-iw');
-
           /* Since this div is in a position prior to .gm-div style-iw.
            * We use jQuery and create a iwBackground variable,
            * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
           */
           iwOuter.previousSibling.className += "Working_class";
           var iwBkgChildren = document.querySelector('.Working_class').children; // [<div class="child1">]
+
+          // Display overflow visible,
+          // checking to see which method is faster
+          var override = iwOuter.children.item(0);
+          override.style.overflow = "visible";
+      //    override.className += "overflow_override";
+          override.children.item(0).setAttribute('style', 'overflow: visible');
+      //    override.children.item(0).className += "overflow_override";
 
           // Removes background shadow DIV
       //    children.item(1).style.display = "none";

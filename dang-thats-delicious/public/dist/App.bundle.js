@@ -999,6 +999,18 @@ var _bling = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function unfade(element) {
+  var op = 0.1; // initial opacity
+  var timer = setInterval(function () {
+    if (op >= 1) {
+      clearInterval(timer);
+    }
+    element.style.opacity = op;
+    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+    op += op * 0.1;
+  }, 1);
+}
+
 var mapOptions = {
   center: { lat: 59.91, lng: 10.73 },
   zoom: 13,
@@ -1041,6 +1053,12 @@ function loadPlaces(map) {
         var html = '\n        <div id="iw-container">\n          <a href="/statue/' + this.place.slug + '">\n          <div class="iw-content" style="background:url(/uploads/' + (this.place.photo || 'store.png') + ');background-size:cover;">\n            <p>\n              <strong>' + this.place.title + '</strong>\n            <br/>' + this.place.artist + '</p>\n          </div>\n          </a>\n        </div>\n      ';
         infoWindow.setContent(html);
         infoWindow.open(map, this);
+        //fadein iw
+        var test = (0, _bling.$)(".gm-style-iw");
+        var iw_container = (0, _bling.$)(".gm-style-iw").parentElement;
+        test.style.opacity = "0";
+        unfade(test);
+        //  unfade(iw_container);
 
         // *
         // START INFOWINDOW CUSTOMIZE.
@@ -1051,13 +1069,20 @@ function loadPlaces(map) {
 
         // Reference to the DIV that wraps the bottom of infoWindow
         var iwOuter = (0, _bling.$)('.gm-style-iw');
-
         /* Since this div is in a position prior to .gm-div style-iw.
          * We use jQuery and create a iwBackground variable,
          * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
         */
         iwOuter.previousSibling.className += "Working_class";
         var iwBkgChildren = document.querySelector('.Working_class').children; // [<div class="child1">]
+
+        // Display overflow visible,
+        // checking to see which method is faster
+        var override = iwOuter.children.item(0);
+        override.style.overflow = "visible";
+        //    override.className += "overflow_override";
+        override.children.item(0).setAttribute('style', 'overflow: visible');
+        //    override.children.item(0).className += "overflow_override";
 
         // Removes background shadow DIV
         //    children.item(1).style.display = "none";
