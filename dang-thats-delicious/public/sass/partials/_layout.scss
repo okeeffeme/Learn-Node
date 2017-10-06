@@ -3,8 +3,8 @@ html {
 }
 
 body {
-  background: $purple;
-  background:#efefef;
+  background: $white;
+  min-height: 100vh;
   // &:before {
   //   content: '';
   //   display: block;
@@ -16,11 +16,15 @@ body {
 
 .inner {
   position: absolute;
-  z-index: 99;
+  z-index: 4;
+  pointer-events: none;
   width:900px;
   left: 0;
   right: 0;
   margin: 0 auto;
+  & * {
+    pointer-events: auto;
+  }
   @media all and (max-width: 900px) {
     width: 100%;
     padding: 2rem;

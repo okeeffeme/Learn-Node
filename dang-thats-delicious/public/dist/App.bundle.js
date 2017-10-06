@@ -1050,7 +1050,7 @@ function loadPlaces(map) {
     //handle infoWindow
     markers.forEach(function (marker) {
       return marker.addListener('click', function () {
-        var html = '\n        <div id="iw-container">\n          <a href="/statue/' + this.place.slug + '">\n          <div class="iw-content" style="background:url(/uploads/' + (this.place.photo || 'store.png') + ');background-size:cover;">\n            <p>\n              <strong>' + this.place.title + '</strong>\n            <br/>' + this.place.artist + '</p>\n          </div>\n          </a>\n        </div>\n      ';
+        var html = '\n        <div id="iw-container">\n          <a href="/statue/' + this.place.slug + '">\n          <div class="iw-content" style="background:url(/uploads/' + (this.place.photo || 'store.png') + ');background-size:cover;background-position:center;">\n            <p>\n              <strong>' + this.place.title + '</strong>\n            <br/>' + this.place.artist + '</p>\n          </div>\n          </a>\n        </div>\n      ';
         infoWindow.setContent(html);
         infoWindow.open(map, this);
         //fadein iw
@@ -1122,6 +1122,7 @@ function makeMap(mapDiv) {
   var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   var navHeight = (0, _bling.$)('.nav').offsetHeight;
   var mapHeight = windowHeight - navHeight;
+  console.log(" windowHeight " + windowHeight + " navHeight " + navHeight + " mapHeight " + mapHeight);
   (0, _bling.$)('#map').style.height = mapHeight + 'px';
   //make map
   var map = new google.maps.Map(mapDiv, mapOptions);

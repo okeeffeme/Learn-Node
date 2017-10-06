@@ -21,7 +21,7 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `Now That's Delicious!`;
 
 exports.menu = [
-  { slug: '/about', title: 'About the Project', icon: 'tag', },
-  { slug: '/statues', title: 'See All Statues', icon: 'store', },
-  { slug: '/add', title: 'Add a Statue', icon: 'add', },
+  { slug: '/about', title: 'About the Project', },
+  { slug: '/statues', title: 'See All Statues', },
+  { slug: '/add', title: 'Add a Statue', },
 ];

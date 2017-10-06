@@ -50,7 +50,7 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
       const html = `
         <div id="iw-container">
           <a href="/statue/${this.place.slug}">
-          <div class="iw-content" style="background:url(/uploads/${this.place.photo || 'store.png'});background-size:cover;">
+          <div class="iw-content" style="background:url(/uploads/${this.place.photo || 'store.png'});background-size:cover;background-position:center;">
             <p>
               <strong>${this.place.title}</strong>
             <br/>${this.place.artist}</p>
@@ -129,6 +129,7 @@ function makeMap(mapDiv) {
   let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   let navHeight = $('.nav').offsetHeight;
   let mapHeight = windowHeight-navHeight;
+  console.log(" windowHeight " + windowHeight + " navHeight " + navHeight  + " mapHeight " + mapHeight);
   $('#map').style.height = `${mapHeight}px`;
   //make map
   const map = new google.maps.Map(mapDiv, mapOptions);

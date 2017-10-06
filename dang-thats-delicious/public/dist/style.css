@@ -3,16 +3,19 @@ html {
   font-size: 10px; }
 
 body {
-  background: #262161;
-  background: #efefef; }
+  background: #efe6e6;
+  min-height: 100vh; }
 
 .inner {
   position: absolute;
-  z-index: 99;
+  z-index: 4;
+  pointer-events: none;
   width: 900px;
   left: 0;
   right: 0;
   margin: 0 auto; }
+  .inner * {
+    pointer-events: auto; }
   @media all and (max-width: 900px) {
     .inner {
       width: 100%;
@@ -442,7 +445,7 @@ html {
 
 body {
   font-size: 1.5rem;
-  color: #303030; }
+  color: #323232; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 5rem;
@@ -452,10 +455,10 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   text-decoration: none;
-  color: #303030; }
+  color: #323232; }
 
 p a {
-  border-bottom: 2px solid #FFC40E; }
+  border-bottom: 2px solid #FBD2D7; }
 
 p {
   line-height: 2;
@@ -487,7 +490,7 @@ p {
         transform: skew(-5deg); }
   .title a {
     border-bottom: 0;
-    background-image: linear-gradient(to right, rgba(255, 196, 14, 0.8) 100%, rgba(255, 196, 14, 0.8) 50%); }
+    background-image: linear-gradient(to right, rgba(251, 210, 215, 0.8) 100%, rgba(251, 210, 215, 0.8) 50%); }
 
 .title--single {
   max-width: 600px;
@@ -509,7 +512,7 @@ label {
 .form {
   background: white;
   padding: 2rem;
-  box-shadow: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); }
+  box-shadow: linear-gradient(160deg, #d1a1a7 0%, #fbe8eb 20%, #efe6e6 60%, #efe6e6 85%, #d1a1a7 95%); }
   .form + .form {
     margin-top: 4rem; }
   .form h2 {
@@ -576,7 +579,7 @@ label {
     background: none;
     border: 0; }
     .flash__remove:hover {
-      color: #FFC40E; }
+      color: #FBD2D7; }
   .flash:after {
     content: '';
     display: block;
@@ -606,7 +609,7 @@ label {
   padding: 0;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  background: #303030; }
+  background: #323232; }
   .nav__section {
     display: -ms-flexbox;
     display: flex; }
@@ -617,7 +620,7 @@ label {
     display: -ms-flexbox;
     display: flex; }
   .nav__link {
-    background: #303030;
+    background: #323232;
     color: white;
     text-transform: uppercase;
     padding: 1.2rem 2rem 1rem 2rem;
@@ -705,7 +708,7 @@ label {
   .table tr:nth-child(odd):not(:first-child) {
     background: #f7f7f7; }
   .table thead tr {
-    background: #303030;
+    background: #323232;
     color: white; }
 
 .stores {
@@ -817,17 +820,17 @@ label {
         background: #e6e6e6;
         padding: 1rem 1rem 1rem 4rem; }
       .tag__choice input:checked + label {
-        background: #FFC40E; }
+        background: #FBD2D7; }
   .tag__link {
-    background: #FFC40E;
-    color: #303030;
+    background: #FBD2D7;
+    color: #323232;
     display: -ms-flexbox;
     display: flex;
     padding-left: 10px;
     -webkit-clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
             clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%); }
     .tag__link--active {
-      background: #827cd2; }
+      background: white; }
       .tag__link--active .tag__text {
         color: white; }
   .tag__text {
@@ -892,7 +895,7 @@ label {
   margin: 0;
   margin-top: -3rem;
   margin-right: -5rem;
-  background: #303030;
+  background: #323232;
   color: white;
   display: inline-block;
   float: right;
@@ -953,7 +956,7 @@ label {
     left: 0;
     content: '';
     display: block;
-    background: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%);
+    background: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FBD2D7 85%, #48ded4 95%);
     position: absolute;
     height: 100%;
     background-attachment: fixed; }
@@ -986,7 +989,7 @@ label {
     font-size: 1.2rem;
     color: #999999; }
   .review__stars {
-    color: #FFC40E; }
+    color: #FBD2D7; }
   .review__body {
     padding: 2rem; }
   .review p {
@@ -1007,7 +1010,7 @@ label {
     .reviewer__stars input {
       display: none; }
       .reviewer__stars input:checked ~ label {
-        color: #FFC40E; }
+        color: #FBD2D7; }
       .reviewer__stars input + label {
         font-size: 0;
         /* These are in the opposite DOM order
@@ -1033,7 +1036,7 @@ label {
           -ms-flex-order: 1;
               order: 1; }
         .reviewer__stars input + label:hover, .reviewer__stars input + label:hover ~ label {
-          color: #ffdd74; }
+          color: white; }
   .reviewer textarea {
     border: 0;
     outline: 0;
@@ -1144,9 +1147,8 @@ label {
 
 .button {
   border: 0;
-  background: #FFC40E;
-  color: #303030;
-  font-family: 'Panama';
+  background: #FBD2D7;
+  color: #323232;
   font-weight: 600; }
 
 .avatar {
