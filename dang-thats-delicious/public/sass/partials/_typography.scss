@@ -41,6 +41,7 @@ h1, h2, h3, h4, h5, h6, {
     font-family: 'teko';
     vertical-align: text-bottom;
     font-size: 3rem;
+    line-height: 3rem;
   }
 }
 
@@ -67,7 +68,6 @@ p {
   font-size: 40px;
   z-index: 2;
   line-height:1.1;
-  transform: skew(0, -3deg);
   &--long {
     font-size: 30px;
   }

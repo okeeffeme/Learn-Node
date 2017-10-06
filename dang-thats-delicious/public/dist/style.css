@@ -466,7 +466,8 @@ h1, h2, h3, h4, h5, h6 {
 .nav__section--search input {
   font-family: 'teko';
   vertical-align: text-bottom;
-  font-size: 3rem; }
+  font-size: 3rem;
+  line-height: 3rem; }
 
 a {
   text-decoration: none;
@@ -487,8 +488,6 @@ p {
   font-size: 40px;
   z-index: 2;
   line-height: 1.1;
-  -ms-transform: skew(0, -3deg);
-      transform: skew(0, -3deg);
   line-height: 1.1; }
   .title--long {
     font-size: 30px; }
@@ -556,6 +555,15 @@ label {
     color: white;
     outline: 0;
     border: 0; }
+    .search__input::-webkit-input-placeholder {
+      text-transform: uppercase;
+      line-height: normal; }
+    .search__input:-ms-input-placeholder {
+      text-transform: uppercase;
+      line-height: normal; }
+    .search__input::placeholder {
+      text-transform: uppercase;
+      line-height: normal; }
   .search__result {
     padding: 10px;
     display: block;
@@ -641,6 +649,9 @@ label {
     background: #323232;
     color: white;
     text-transform: uppercase;
+    text-decoration: underline;
+    -webkit-text-decoration-color: #323232;
+            text-decoration-color: #323232;
     padding: 1.2rem 2rem 1rem 2rem;
     display: block;
     display: -ms-flexbox;
@@ -658,12 +669,13 @@ label {
       fill: white;
       margin-bottom: 1rem; }
     .nav__link:hover, .nav__link--active {
-      background: grey; }
+      -webkit-text-decoration-color: #FBD2D7;
+              text-decoration-color: #FBD2D7; }
     .nav__link--logo:hover svg {
       -ms-transform: none;
           transform: none; }
     .nav__link--logo svg {
-      width: 80px;
+      max-width: 60px;
       margin: 0; }
 
 @media all and (max-width: 1200px) {
@@ -787,7 +799,7 @@ label {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, #05b3d6 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0958ec 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, #d209ec 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, #05e129 100%, rgba(5, 225, 41, 0) 70%);
+    background: linear-gradient(160deg, #d1a1a7 0%, #fbe8eb 20%, #efe6e6 60%, #efe6e6 85%, #d1a1a7 95%);
     opacity: 0.6;
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
@@ -877,8 +889,8 @@ label {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, #05b3d6 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0958ec 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, #d209ec 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, #05e129 100%, rgba(5, 225, 41, 0) 70%);
-    opacity: 0.6;
+    background: linear-gradient(160deg, #d1a1a7 0%, #fbe8eb 20%, #efe6e6 60%, #efe6e6 85%, #d1a1a7 95%);
+    opacity: 0.2;
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2vw), 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2vw), 0% 100%); }
@@ -892,7 +904,8 @@ label {
   position: absolute; }
 
 .single__details {
-  background: white;
+  background: #efe6e6;
+  -webkit-font-smoothing: antialiased;
   position: relative;
   padding: 3rem;
   margin-top: -10rem;
