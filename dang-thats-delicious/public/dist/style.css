@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);@charset "UTF-8";
 html {
   font-size: 10px; }
 
@@ -440,8 +440,16 @@ template {
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'teko';
+  src: url("/fonts/teko-v6-latin-regular.woff2") format("woff2"), url("/fonts/teko-v6-latin-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 html {
-  font-size: 10px; }
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  font-size: 10px;
+  font-weight: normal; }
 
 body {
   font-size: 1.5rem;
@@ -449,9 +457,16 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 5rem;
-  font-family: 'Panama';
-  font-weight: 600;
-  letter-spacing: -1px; }
+  font-family: 'teko';
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: 1px; }
+
+.nav__item,
+.nav__section--search input {
+  font-family: 'teko';
+  vertical-align: text-bottom;
+  font-size: 3rem; }
 
 a {
   text-decoration: none;
@@ -601,12 +616,15 @@ label {
   .flash p {
     margin: 0; }
 
+.testSPAN {
+  height: 3rem; }
+
 .nav {
   display: -ms-flexbox;
   display: flex;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0;
   -ms-flex-pack: justify;
       justify-content: space-between;
   background: #323232; }
@@ -633,24 +651,19 @@ label {
         align-items: center;
     -ms-flex-pack: center;
         justify-content: center;
-    transition: transform 0.2s;
-    border-bottom: 5px solid transparent; }
+    transition: transform 0.2s; }
     .nav__link svg {
       width: 40px;
       transition: all 0.2s;
       fill: white;
       margin-bottom: 1rem; }
     .nav__link:hover, .nav__link--active {
-      border-bottom-color: rgba(0, 0, 0, 0.2);
       background: grey; }
-      .nav__link:hover svg, .nav__link--active svg {
-        -ms-transform: scale(1.2);
-            transform: scale(1.2); }
     .nav__link--logo:hover svg {
       -ms-transform: none;
           transform: none; }
     .nav__link--logo svg {
-      width: 200px;
+      width: 80px;
       margin: 0; }
 
 @media all and (max-width: 1200px) {
@@ -1111,6 +1124,7 @@ label {
   -ms-flex-pack: end;
       justify-content: flex-end; }
   #iw-container .iw-content p {
+    -webkit-font-smoothing: antialiased;
     z-index: 99;
     text-align: right;
     margin-right: 14px;
@@ -1127,12 +1141,12 @@ label {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(45deg, #aab5b7 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #4b515d 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, #998f9a 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, #8a968c 100%, rgba(5, 225, 41, 0) 70%);
-    opacity: 0.8;
+    background: linear-gradient(160deg, #d1a1a7 0%, #fbe8eb 20%, #efe6e6 60%, #efe6e6 85%, #d1a1a7 95%);
+    opacity: 0.6;
     transition: opacity .3s linear;
     z-index: 1; }
   #iw-container .iw-content:hover:before {
-    opacity: 0; }
+    opacity: 0.2; }
 
 @media all and (max-width: 650px) {
   #iw-container .iw-content {
@@ -1149,6 +1163,8 @@ label {
   border: 0;
   background: #FBD2D7;
   color: #323232;
+  font-family: 'teko';
+  text-transform: uppercase;
   font-weight: 600; }
 
 .avatar {

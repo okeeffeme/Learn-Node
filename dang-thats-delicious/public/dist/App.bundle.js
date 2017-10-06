@@ -1120,9 +1120,12 @@ function makeMap(mapDiv) {
   if (!mapDiv) return;
   //set map div height
   var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  var navHeight = (0, _bling.$)('.nav').offsetHeight;
+  var navHeight = (0, _bling.$)('.nav').getBoundingClientRect().height;
   var mapHeight = windowHeight - navHeight;
   console.log(" windowHeight " + windowHeight + " navHeight " + navHeight + " mapHeight " + mapHeight);
+  console.log(".nav__item " + (0, _bling.$)('.nav__item').offsetHeight);
+  console.log(".nav__link " + (0, _bling.$)('.nav__link').offsetHeight);
+  console.log(".testSPAN " + (0, _bling.$)('.testSPAN').offsetHeight);
   (0, _bling.$)('#map').style.height = mapHeight + 'px';
   //make map
   var map = new google.maps.Map(mapDiv, mapOptions);

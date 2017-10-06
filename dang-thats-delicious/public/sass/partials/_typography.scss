@@ -1,14 +1,25 @@
+// TEKO TEST
 @font-face {
     font-family: 'panama';
     src: url('/fonts/panama-bold-webfont.woff2') format('woff2'),
          url('/fonts/panama-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+@font-face {
+    font-family: 'teko';
+    src: url('/fonts/teko-v6-latin-regular.woff2') format('woff2'),
+         url('/fonts/teko-v6-latin-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 html {
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
   font-size:10px;
+  font-weight: normal;
 }
 
 body {
@@ -18,10 +29,21 @@ body {
 
 h1, h2, h3, h4, h5, h6, {
   font-size: 5rem;
-  font-family: 'Panama';
-  font-weight: 600;
-  letter-spacing:-1px;
+  font-family: 'teko';
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing:1px;
 }
+
+.nav {
+  &__item,
+  &__section--search input {
+    font-family: 'teko';
+    vertical-align: text-bottom;
+    font-size: 3rem;
+  }
+}
+
 
 a {
   text-decoration: none;
