@@ -51,7 +51,7 @@ exports.createStatue = async (req, res) => {
   req.flash('success', `Successfully created <strong>${statue.title}</strong>.`);
   res.redirect('/');
   //if allow auto creation
-  //res.redirect(`/store/${statue.slug}`);
+  //res.redirect(`/statue/${statue.slug}`);
 };
 
 exports.updateStatue = async (req, res) => {
@@ -87,7 +87,7 @@ exports.getStatueBySlug = async (req, res, next) => {
 };
 
 exports.editStatue = async (req, res) => {
-  //Find store via ID
+  //Find statue via ID
   const statue = await Statue.findOne({ _id: req.params.id });
   //confirm admin acct
   //render edit form

@@ -730,7 +730,7 @@ label {
     background: #323232;
     color: white; }
 
-.stores {
+.statues {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -738,26 +738,26 @@ label {
   -ms-flex-pack: justify;
       justify-content: space-between; }
 
-.store {
+.statue {
   background: white;
   margin: 10px 0;
   width: 30%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-  .store--wide {
+  .statue--wide {
     width: 100%; }
-  .store__details {
+  .statue__details {
     padding: 2rem; }
-    .store__details p {
+    .statue__details p {
       line-height: 1.2;
       margin-bottom: 0; }
   @media all and (max-width: 850px) {
-    .store {
+    .statue {
       width: 48%; } }
   @media all and (max-width: 550px) {
-    .store {
+    .statue {
       width: 100%; } }
 
-.store__actions {
+.statue__actions {
   position: relative;
   z-index: 2;
   margin-bottom: 50px;
@@ -771,20 +771,20 @@ label {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-.store__action {
+.statue__action {
   font-size: 10px; }
-  .store__action svg {
+  .statue__action svg {
     width: 25px;
     fill: white; }
-  .store__action--edit a {
+  .statue__action--edit a {
     border-bottom: 0; }
 
-.store__hero {
+.statue__hero {
   position: relative;
   padding: 0 10px 0 10px;
   text-align: left;
   height: 220px; }
-  .store__hero:before {
+  .statue__hero:before {
     display: block;
     content: '';
     position: absolute;
@@ -795,7 +795,7 @@ label {
     background: linear-gradient(160deg, #d1a1a7 0%, #fbe8eb 20%, #efe6e6 60%, #efe6e6 85%, #d1a1a7 95%);
     opacity: 0.6;
     z-index: 1; }
-  .store__hero img {
+  .statue__hero img {
     height: 100%;
     width: 100%;
     top: 0;
