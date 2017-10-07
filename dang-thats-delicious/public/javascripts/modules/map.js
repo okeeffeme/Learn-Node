@@ -10,7 +10,8 @@ function unfade(element) {
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op += op * 0.1;
-    }, 1);
+    }, 20);
+
 }
 
 
@@ -50,7 +51,7 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
       const html = `
         <div id="iw-container">
           <a href="/statue/${this.place.slug}">
-          <div class="iw-content" style="background:url(/uploads/${this.place.photo || 'store.png'});background-size:cover;background-position:center;">
+          <div class="iw-content" style="background:url(/uploads/${this.place.photo || 'statue.jpg'});background-size:cover;background-position:center;">
             <p>
               <strong>${this.place.title}</strong>
             <br/>${this.place.artist}</p>
@@ -61,17 +62,13 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
       infoWindow.setContent(html);
       infoWindow.open(map, this);
       //fadein iw
-      var test = $(".gm-style-iw");
-      var iw_container = $(".gm-style-iw").parentElement;
-      test.style.opacity = "0";
-        unfade(test);
-    //  unfade(iw_container);
+        var inner_container = $(".gm-style-iw");
+        var iw_container = inner_container.parentElement;
+        inner_container.style.opacity = "0";
+        unfade(inner_container);
 
-      // *
+        // *
         // START INFOWINDOW CUSTOMIZE.
-        // The google.maps.event.addListener() event expects
-        // the creation of the infoWindow HTML structure 'domready'
-        // and before the opening of the infoWindow, defined styles are applied.
         // *
 
           // Reference to the DIV that wraps the bottom of infoWindow
@@ -109,10 +106,12 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
         //  iwBkgChildren.item(2).find('div').children().css({'box-shadow': 'rgba(178, 178, 178, 0.6) 0px 1px 6px', 'z-index' : '1'});
 
           // Reference to the div that groups the close button elements.
-        //  var iwCloseBtn = iwOuter.next();
+          //var iwCloseBtn = iwOuter.nextSibling;
+          //iwCloseBtn.className += 'CLOSE_BUTTON_TEST';
+
 
           // Apply the desired effect to the close button
-        //  iwCloseBtn.css({opacity: '1', right: '40px', top: '5px', border: '7px solid #fff', 'border-radius': '13px', 'box-shadow': '0 0 5px #bbb'});
+//iwCloseBtn.setAttribute('style', `opacity: '1', right: '40px', top: '5px', border: '7px solid #fff', 'border-radius': '13px', 'box-shadow': '0 0 5px #bbb'`);
 
           // The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
         //  iwCloseBtn.mouseout(function(){
@@ -123,17 +122,23 @@ function loadPlaces(map, lat = 59.91, lng = 10.73) {
   });
 };
 
+function setMapDiv() {
+  let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  let navHeight = Math.max($('.nav').getBoundingClientRect().height || 0);
+  let mapHeight = windowHeight-navHeight;
+  if (mapHeight > 0) {
+    $('#map').style.height = `${mapHeight}px`;
+    return;
+  } else {
+    $('#map').style.height = "100vh";
+    return;
+  }
+};
+
 function makeMap(mapDiv) {
   if(!mapDiv) return;
   //set map div height
-  let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  let navHeight = $('.nav').getBoundingClientRect().height;
-  let mapHeight = windowHeight-navHeight;
-  console.log(" windowHeight " + windowHeight + " navHeight " + navHeight  + " mapHeight " + mapHeight);
-  console.log(".nav__item " + $('.nav__item').offsetHeight);
-  console.log(".nav__link " + $('.nav__link').offsetHeight);
-  console.log(".testSPAN " + $('.testSPAN').offsetHeight);
-  $('#map').style.height = `${mapHeight}px`;
+  setMapDiv();
   //make map
   const map = new google.maps.Map(mapDiv, mapOptions);
   loadPlaces(map);

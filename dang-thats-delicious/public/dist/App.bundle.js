@@ -1008,7 +1008,7 @@ function unfade(element) {
     element.style.opacity = op;
     element.style.filter = 'alpha(opacity=' + op * 100 + ")";
     op += op * 0.1;
-  }, 1);
+  }, 20);
 }
 
 var mapOptions = {
@@ -1050,21 +1050,17 @@ function loadPlaces(map) {
     //handle infoWindow
     markers.forEach(function (marker) {
       return marker.addListener('click', function () {
-        var html = '\n        <div id="iw-container">\n          <a href="/statue/' + this.place.slug + '">\n          <div class="iw-content" style="background:url(/uploads/' + (this.place.photo || 'store.png') + ');background-size:cover;background-position:center;">\n            <p>\n              <strong>' + this.place.title + '</strong>\n            <br/>' + this.place.artist + '</p>\n          </div>\n          </a>\n        </div>\n      ';
+        var html = '\n        <div id="iw-container">\n          <a href="/statue/' + this.place.slug + '">\n          <div class="iw-content" style="background:url(/uploads/' + (this.place.photo || 'statue.jpg') + ');background-size:cover;background-position:center;">\n            <p>\n              <strong>' + this.place.title + '</strong>\n            <br/>' + this.place.artist + '</p>\n          </div>\n          </a>\n        </div>\n      ';
         infoWindow.setContent(html);
         infoWindow.open(map, this);
         //fadein iw
-        var test = (0, _bling.$)(".gm-style-iw");
-        var iw_container = (0, _bling.$)(".gm-style-iw").parentElement;
-        test.style.opacity = "0";
-        unfade(test);
-        //  unfade(iw_container);
+        var inner_container = (0, _bling.$)(".gm-style-iw");
+        var iw_container = inner_container.parentElement;
+        inner_container.style.opacity = "0";
+        unfade(inner_container);
 
         // *
         // START INFOWINDOW CUSTOMIZE.
-        // The google.maps.event.addListener() event expects
-        // the creation of the infoWindow HTML structure 'domready'
-        // and before the opening of the infoWindow, defined styles are applied.
         // *
 
         // Reference to the DIV that wraps the bottom of infoWindow
@@ -1102,10 +1098,12 @@ function loadPlaces(map) {
         //  iwBkgChildren.item(2).find('div').children().css({'box-shadow': 'rgba(178, 178, 178, 0.6) 0px 1px 6px', 'z-index' : '1'});
 
         // Reference to the div that groups the close button elements.
-        //  var iwCloseBtn = iwOuter.next();
+        //var iwCloseBtn = iwOuter.nextSibling;
+        //iwCloseBtn.className += 'CLOSE_BUTTON_TEST';
+
 
         // Apply the desired effect to the close button
-        //  iwCloseBtn.css({opacity: '1', right: '40px', top: '5px', border: '7px solid #fff', 'border-radius': '13px', 'box-shadow': '0 0 5px #bbb'});
+        //iwCloseBtn.setAttribute('style', `opacity: '1', right: '40px', top: '5px', border: '7px solid #fff', 'border-radius': '13px', 'box-shadow': '0 0 5px #bbb'`);
 
         // The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
         //  iwCloseBtn.mouseout(function(){
@@ -1116,17 +1114,23 @@ function loadPlaces(map) {
   });
 };
 
+function setMapDiv() {
+  var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  var navHeight = Math.max((0, _bling.$)('.nav').getBoundingClientRect().height || 0);
+  var mapHeight = windowHeight - navHeight;
+  if (mapHeight > 0) {
+    (0, _bling.$)('#map').style.height = mapHeight + 'px';
+    return;
+  } else {
+    (0, _bling.$)('#map').style.height = "100vh";
+    return;
+  }
+};
+
 function makeMap(mapDiv) {
   if (!mapDiv) return;
   //set map div height
-  var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  var navHeight = (0, _bling.$)('.nav').getBoundingClientRect().height;
-  var mapHeight = windowHeight - navHeight;
-  console.log(" windowHeight " + windowHeight + " navHeight " + navHeight + " mapHeight " + mapHeight);
-  console.log(".nav__item " + (0, _bling.$)('.nav__item').offsetHeight);
-  console.log(".nav__link " + (0, _bling.$)('.nav__link').offsetHeight);
-  console.log(".testSPAN " + (0, _bling.$)('.testSPAN').offsetHeight);
-  (0, _bling.$)('#map').style.height = mapHeight + 'px';
+  setMapDiv();
   //make map
   var map = new google.maps.Map(mapDiv, mapOptions);
   loadPlaces(map);

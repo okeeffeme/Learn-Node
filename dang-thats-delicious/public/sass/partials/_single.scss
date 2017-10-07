@@ -1,6 +1,6 @@
 .single {
   &__hero {
-    height: 500px;
+    height: 70vh;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -30,7 +30,7 @@
     position: absolute;
   }
   &__details {
-    background: $white;
+    background: white;
     -webkit-font-smoothing: antialiased;
     // clip-path: polygon(0px 2vw, 100% 0, 100% calc(100% - 2vw), 0% 100%);
     position: relative;

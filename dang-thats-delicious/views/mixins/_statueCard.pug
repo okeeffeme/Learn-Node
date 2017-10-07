@@ -1,11 +1,12 @@
 mixin statueCard(statue = {})
   .store
     .store__hero
-      .store__actions
-        .store__action.store__action--edit
-          a(href=`/statues/${statue._id}/edit`)
-            != h.icon('pencil')
-      img(src=`/uploads/${statue.photo || 'store.png'}`)
+      if user
+        .store__actions
+          .store__action.store__action--edit
+            a(href=`/statues/${statue._id}/edit`)
+              != h.icon('pencil')
+      img(src=`/uploads/${statue.photo || 'statue.jpg'}`)
       h2.title
         a(href=`/statue/${statue.slug}`) #{statue.title}
     .store__details

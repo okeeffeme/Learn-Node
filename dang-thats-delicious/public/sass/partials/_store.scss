@@ -30,8 +30,8 @@
 .store__actions {
   position: relative;
   z-index: 2;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
+//  border-bottom: 1px solid rgba(0,0,0,0.2);
+//  box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
   margin-bottom: 50px;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -58,7 +58,12 @@
 .store__hero {
   position: relative;
   padding: 0 10px 0 10px;
-  text-align: right;
+  text-align: left;
+  height: 220px;
+  
+  a {
+
+  }
   &:before {
     display: block;
     content: '';
@@ -70,7 +75,7 @@
     background: $grad;
     opacity: 0.6;
     z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    //clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   }
   img {
     height: 100%;
@@ -80,6 +85,6 @@
     position: absolute;
     left: 0;
     object-fit: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    //clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   }
 }

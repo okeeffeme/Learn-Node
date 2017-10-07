@@ -499,9 +499,7 @@ p {
     height: 100%;
     display: block;
     position: absolute;
-    z-index: -1;
-    -ms-transform: skew(-5deg);
-        transform: skew(-5deg); }
+    z-index: -1; }
   .title a {
     border-bottom: 0;
     background-image: linear-gradient(to right, rgba(251, 210, 215, 0.8) 100%, rgba(251, 210, 215, 0.8) 50%); }
@@ -624,15 +622,11 @@ label {
   .flash p {
     margin: 0; }
 
-.testSPAN {
-  height: 3rem; }
-
 .nav {
   display: -ms-flexbox;
   display: flex;
   list-style: none;
   margin: 0;
-  padding: 1rem 0;
   -ms-flex-pack: justify;
       justify-content: space-between;
   background: #323232; }
@@ -766,8 +760,6 @@ label {
 .store__actions {
   position: relative;
   z-index: 2;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2);
   margin-bottom: 50px;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -790,7 +782,8 @@ label {
 .store__hero {
   position: relative;
   padding: 0 10px 0 10px;
-  text-align: right; }
+  text-align: left;
+  height: 220px; }
   .store__hero:before {
     display: block;
     content: '';
@@ -801,9 +794,7 @@ label {
     right: 0;
     background: linear-gradient(160deg, #d1a1a7 0%, #fbe8eb 20%, #efe6e6 60%, #efe6e6 85%, #d1a1a7 95%);
     opacity: 0.6;
-    z-index: 1;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+    z-index: 1; }
   .store__hero img {
     height: 100%;
     width: 100%;
@@ -811,9 +802,7 @@ label {
     right: 0;
     position: absolute;
     left: 0;
-    object-fit: cover;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+    object-fit: cover; }
 
 .tags {
   margin: 0;
@@ -870,7 +859,7 @@ label {
     background-clip: padding-box; }
 
 .single__hero {
-  height: 500px;
+  height: 70vh;
   position: relative;
   overflow: hidden;
   display: -ms-flexbox;
@@ -904,7 +893,7 @@ label {
   position: absolute; }
 
 .single__details {
-  background: #efe6e6;
+  background: white;
   -webkit-font-smoothing: antialiased;
   position: relative;
   padding: 3rem;
