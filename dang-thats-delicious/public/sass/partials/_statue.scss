@@ -28,13 +28,15 @@
 }
 
 .statue__actions {
-  position: relative;
+//  position: relative;
+  position: absolute;
   z-index: 2;
 //  border-bottom: 1px solid rgba(0,0,0,0.2);
 //  box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
-  margin-bottom: 50px;
-  padding-top: 10px;
-  padding-bottom: 20px;
+//  margin-bottom: 50px;
+//  padding-top: 10px;
+//  padding-bottom: 20px;
+  top: 10px;
   display: flex;
   color: white;
   align-items: center;
@@ -60,9 +62,14 @@
   padding: 0 10px 0 10px;
   text-align: left;
   height: 220px;
-
-  a {
-
+  display: flex;
+  align-items: flex-end;
+  .title {
+    top: 20px;
+    a {
+      font-size: 3rem;
+      margin-top: 10px;
+    }
   }
   &:before {
     display: block;
@@ -73,7 +80,7 @@
     top: 0;
     right: 0;
     background: $grad;
-    opacity: 0.6;
+    opacity: 0.1;
     z-index: 1;
     //clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   }

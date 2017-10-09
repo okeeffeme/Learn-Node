@@ -126,6 +126,7 @@ function setMapDiv() {
   let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   let navHeight = Math.max($('.nav').getBoundingClientRect().height || 0);
   let mapHeight = windowHeight-navHeight;
+  console.log("windowHeight " + windowHeight + ", navHeight " + navHeight + ", mapHeight " + mapHeight);
   if (mapHeight > 0) {
     $('#map').style.height = `${mapHeight}px`;
     return;

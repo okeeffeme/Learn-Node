@@ -1118,6 +1118,7 @@ function setMapDiv() {
   var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   var navHeight = Math.max((0, _bling.$)('.nav').getBoundingClientRect().height || 0);
   var mapHeight = windowHeight - navHeight;
+  console.log("windowHeight " + windowHeight + ", navHeight " + navHeight + ", mapHeight " + mapHeight);
   if (mapHeight > 0) {
     (0, _bling.$)('#map').style.height = mapHeight + 'px';
     return;

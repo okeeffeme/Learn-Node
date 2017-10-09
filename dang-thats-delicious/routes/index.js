@@ -3,6 +3,7 @@ const router = express.Router();
 const statueController = require('../controllers/statueController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const genController = require('../controllers/genController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', statueController.mapPage);
@@ -46,6 +47,8 @@ router.post('/register',
 router.get('/logout', authController.logout);
 
 router.get('/map', statueController.mapPage);
+
+router.get('/about', genController.aboutPage);
 
 //APIs
 router.get('/api/search', catchErrors(statueController.searchStatues));

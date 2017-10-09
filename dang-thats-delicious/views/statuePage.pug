@@ -4,12 +4,13 @@ block content
   .single
     .single__hero
       img.single__image(src=`/uploads/${statue.photo || 'statue.jpg'}`)
-      h2.title.title--single
-        a(href=`/statues/${statue.slug}`) #{statue.title}
+      //- h2.title.title--single
+      //-   a(href=`/statues/${statue.slug}`) #{statue.title}
 
   .single__details.inner
     img.single__map(src=h.staticMap(statue.location.coordinates))
     p.single__location= statue.artist
+    h2= statue.title
     p= statue.description
 
     //- if statue.tags
