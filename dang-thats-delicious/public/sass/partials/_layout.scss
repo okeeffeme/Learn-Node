@@ -3,21 +3,30 @@ html {
 }
 
 body {
-  background: $purple;
-  background:#efefef;
-  &:before {
-    content: '';
-    display: block;
-    background: $grad;
-    height: 10px;
-    width: 100%;
-  }
+  background: $white;
+  min-height: 100vh;
+  // &:before {
+  //   content: '';
+  //   display: block;
+  //   background: $grad;
+  //   height: 10px;
+  //   width: 100%;
+  // }
 }
 
 .inner {
-  max-width:900px;
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  width:900px;
+  left: 0;
+  right: 0;
   margin: 0 auto;
+  & * {
+    pointer-events: auto;
+  }
   @media all and (max-width: 900px) {
+    width: 100%;
     padding: 2rem;
   }
 }

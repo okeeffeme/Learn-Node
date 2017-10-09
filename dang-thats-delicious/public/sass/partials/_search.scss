@@ -17,6 +17,10 @@
     color: white;
     outline: 0;
     border: 0;
+    &::placeholder {
+      text-transform: uppercase;
+      line-height: normal;
+    }
   }
   &__result {
     padding: 10px;
@@ -27,4 +31,3 @@
     }
   }
 }
-

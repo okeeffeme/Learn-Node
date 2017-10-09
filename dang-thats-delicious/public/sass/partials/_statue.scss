@@ -1,10 +1,10 @@
-.stores {
+.statues {
   display:flex;
   flex-wrap:wrap;
   justify-content:space-between;
 }
 
-.store {
+.statue {
   background:white;
   margin: 10px 0;
   width:30%;
@@ -27,21 +27,23 @@
   }
 }
 
-.store__actions {
-  position: relative;
+.statue__actions {
+//  position: relative;
+  position: absolute;
   z-index: 2;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
-  margin-bottom: 50px;
-  padding-top: 10px;
-  padding-bottom: 20px;
+//  border-bottom: 1px solid rgba(0,0,0,0.2);
+//  box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
+//  margin-bottom: 50px;
+//  padding-top: 10px;
+//  padding-bottom: 20px;
+  top: 10px;
   display: flex;
   color: white;
   align-items: center;
   justify-content: space-around;
 }
 
-.store__action {
+.statue__action {
   font-size: 10px;
   svg {
     width: 25px;
@@ -55,10 +57,20 @@
 }
 
 
-.store__hero {
+.statue__hero {
   position: relative;
   padding: 0 10px 0 10px;
-  text-align: right;
+  text-align: left;
+  height: 220px;
+  display: flex;
+  align-items: flex-end;
+  .title {
+    top: 20px;
+    a {
+      font-size: 3rem;
+      margin-top: 10px;
+    }
+  }
   &:before {
     display: block;
     content: '';
@@ -67,14 +79,10 @@
     width: 100%;
     top: 0;
     right: 0;
-    background:
-      linear-gradient(45deg, hsla(190, 95%, 43%, 1) 0%, hsla(190, 95%, 43%, 0) 70%),
-      linear-gradient(135deg, hsla(219, 93%, 48%, 1) 10%, hsla(219, 93%, 48%, 0) 80%),
-      linear-gradient(225deg, hsla(293, 93%, 48%, 1) 10%, hsla(293, 93%, 48%, 0) 80%),
-      linear-gradient(315deg, hsla(130, 96%, 45%, 1) 100%, hsla(130, 96%, 45%, 0) 70%);
-    opacity: 0.6;
+    background: $grad;
+    opacity: 0.1;
     z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    //clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   }
   img {
     height: 100%;
@@ -84,6 +92,6 @@
     position: absolute;
     left: 0;
     object-fit: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    //clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   }
 }

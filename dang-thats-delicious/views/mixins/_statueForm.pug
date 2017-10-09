@@ -1,0 +1,35 @@
+mixin statueForm(statue = {})
+  form(action=`/add/${statue._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+    //- Title
+    label(for="name") Title
+    input(type="text" name="title" value=statue.title)
+    //- Artist
+    label(for="name") Artist
+    input(type="text" name="artist" value=statue.artist)
+    //- Description
+    label(for="description") Description
+    textarea(name="description")= statue.description
+    //- Photo
+    label(for="photo") Photo
+      input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+      if statue.photo
+        img(src=`/uploads/${statue.photo}`, alt=statue.title width=200)
+    //- Street Address
+    label(for="address") Address
+    input(type="text" id="address" name="location[address]" value=(statue.location && statue.location.address))
+    //- Longitude
+    label(for="lng") Address Long
+    input(type="text" id="lng" name="location[coordinates][0]" value=(statue.location && statue.location.coordinates[0]) required)
+    //- Latitude
+    label(for="lat") Address Lat
+    input(type="text" id="lat" name="location[coordinates][1]" value=(statue.location && statue.location.coordinates[1]) required)
+    //- Tags
+    - const choices = ['Female Artist', 'Sculpture Park', 'Monument']
+    - const tags = statue.tags || []
+    label(for="tags") Tags
+    ul#tags.tags
+      each choice in choices
+        .tag.tag__choice
+          input(type="checkbox" id="choice" value=choice name="tags" checked=(tags.includes(choice)))
+          label(for=choice) #{choice}
+    input(type="submit" value="Save →" class="button")

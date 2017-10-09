@@ -1,0 +1,24 @@
+.gen {
+  max-width:900px;
+  margin: 20px auto;
+  @media all and (max-width: 900px) {
+    padding: 2rem;
+  }
+  &__details {
+    background: white;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    padding: 3rem;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.15);
+  }
+}
+
+p.subtitle {
+  font-size: 2rem;
+  line-height: 2.6rem;
+  font-weight: bold;
+  -webkit-margin-before: 2em;
+  & + p {
+    -webkit-margin-before: -1em;
+  }
+}

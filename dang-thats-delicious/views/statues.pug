@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_statueCard
+block content
+  .gen
+    h2 #{title}
+    .statues
+      each statue in statues
+        +statueCard(statue)

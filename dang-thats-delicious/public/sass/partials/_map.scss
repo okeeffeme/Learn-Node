@@ -1,15 +1,66 @@
 .map {
-  padding: 20px;
-  background: white;
+  background: black;
   box-shadow: $shad;
 }
-#map {
-  height: 500px;
+
+.overflow_override {
+  overflow: visible !important;
 }
 
-.popup {
-  width: 300px;
-  img {
-    width: 100%;
+//modified
+
+.gm-style-iw {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#iw-container {
+  .iw-content {
+    position: relative;
+    width: 380px;
+  	height: 280px;
+    margin: 6px -12px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    p {
+      -webkit-font-smoothing: antialiased;
+      z-index: 99;
+      text-align: right;
+      margin-right: 14px;
+      background-color: $dk_black;
+      color: white;
+      padding: 0px 10px;
+    }
+    &:before {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 280px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: $grad;
+      opacity: 0.2;
+      transition: opacity .3s linear;
+      z-index: 1;
+    }
+    &:hover:before {
+      opacity: 0.1;
+    }
+  }
+}
+
+@media all and (max-width: 650px) {
+  #iw-container {
+    .iw-content {
+      width: 240px;
+      height: 200px;
+    &:before {
+      display: none;
+    }
+    }
   }
 }
